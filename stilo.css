@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(fondoSubayaisushi.jpg);
+    background-size:cover ;
+}
+
+.magazine {
+    position: relative;
+    width: 600px;
+    height: 900px;
+    margin: 30px auto;
+    margin-top: 7px;
+    margin-bottom: 0px;
+    perspective: 1500px; /* Da profundidad 3D */
+}
+
+.page {
+    position: absolute;
+    width: 600px;
+    height: 900px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform-origin: left;
+    transform: rotateY(0deg);
+    transition: transform 0.8s ease-in-out; /* Animación del volteo */
+    backface-visibility: hidden; /* Oculta la parte trasera */
+}
+
+.page.hidden {
+    visibility: hidden;
+}
+
+.page.active {
+    z-index: 10;
+    transform: rotateY(0deg);
+}
+
+.page.previous {
+    z-index: 5;
+    transform: rotateY(-180deg); /* Página volteada */
+}
+
+.page.next {
+    z-index: 5;
+    transform: rotateY(180deg); /* Página volteada */
+}
+
+.page .content {
+    padding: 20px;
+    text-align: center;
+}
+
+.page img {
+    width: 100%;
+    height: 100%;
+}
+
+/* ===== INDICADOR DE NAVEGACIÓN ===== */
+
+.nav-buttons{
+    position:absolute;
+    bottom:15px;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+    padding:0px;
+    z-index:20;
+}
+
+#btnAnterior,
+#btnSiguiente{
+    pointer-events:auto;
+    background:#ff7a00;
+    border:none;
+    color:white;
+    padding:10px 18px;
+    font-size:14px;
+    font-weight:bold;
+    border-radius:8px;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,0.4);
+    transition:0.3s;
+}
+
+#btnAnterior:hover,
+#btnSiguiente:hover{
+    transform:scale(1.05);
+    background:#ff5500;
+}
+
+.navegacion-indicador.mostrar {
+    opacity: 1;
+}
